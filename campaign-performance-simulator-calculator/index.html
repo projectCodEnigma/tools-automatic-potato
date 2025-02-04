@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Campaign Simulator Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .container:hover {
+            transform: translateY(-2px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #007bff;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease-out;
+        }
+
+        .results.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .result-item {
+            margin: 18px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .highlight {
+            color: #007bff;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.4em;
+            margin-right: 8px;
+        }
+
+        .industry-emoji {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-2137593406454250"
+     data-ad-slot="1011661937"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<div class="container">
+        <h1>🎯 Campaign Simulator Calculator</h1>
+        
+        <div class="form-group">
+            <label for="industry">🏭 Select Industry:</label>
+            <select id="industry">
+                <option value="">📋 Choose your industry...</option>
+                <option value="ecommerce">🛍️ E-commerce</option>
+                <option value="realestate">🏠 Real Estate</option>
+                <option value="saas">💻 SaaS</option>
+                <option value="education">🎓 Education</option>
+                <option value="healthcare">🏥 Healthcare</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="budget">💰 Monthly Budget ($):</label>
+            <input type="number" id="budget" placeholder="Enter amount" min="0" step="100">
+        </div>
+
+        <div class="results" id="results">
+            <h2>📈 Potential Results:</h2>
+            <div class="result-item">
+                <span class="emoji">📅</span>
+                With <span class="highlight" id="resultBudget">$5,000</span>/month:
+            </div>
+            <div class="result-item">
+                <span class="emoji">🖱️</span>
+                Clicks: <span class="highlight" id="resultClicks">0</span>
+            </div>
+            <div class="result-item">
+                <span class="emoji">📈</span>
+                Leads: <span class="highlight" id="resultLeads">0</span>
+            </div>
+            <div class="result-item">
+                <span class="emoji">💰</span>
+                Cost Per Lead: <span class="highlight" id="resultCPL">$0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const industryMetrics = {
+            ecommerce: { cpc: 1.20, conversionRate: 4.5, emoji: '🛍️' },
+            realestate: { cpc: 2.50, conversionRate: 3.0, emoji: '🏠' },
+            saas: { cpc: 3.00, conversionRate: 2.5, emoji: '💻' },
+            education: { cpc: 1.80, conversionRate: 5.0, emoji: '🎓' },
+            healthcare: { cpc: 2.20, conversionRate: 2.8, emoji: '🏥' }
+        };
+
+        const industrySelect = document.getElementById('industry');
+        const budgetInput = document.getElementById('budget');
+        const resultsDiv = document.getElementById('results');
+
+        function updateResults() {
+            const industry = industrySelect.value;
+            const budget = parseFloat(budgetInput.value);
+            
+            if (!industry || isNaN(budget) || budget <= 0) {
+                resultsDiv.innerHTML = `
+                    <div class="result-item">❌ Please select an industry and enter valid budget</div>
+                `;
+                resultsDiv.classList.add('visible');
+                return;
+            }
+
+            const metrics = industryMetrics[industry];
+            const clicks = Math.floor(budget / metrics.cpc);
+            const leads = Math.floor(clicks * (metrics.conversionRate / 100));
+            const cpl = leads > 0 ? (budget / leads).toFixed(2) : 0;
+
+            resultsDiv.innerHTML = `
+                <h2>${metrics.emoji} ${industrySelect.options[industrySelect.selectedIndex].text.split(' ')[1]} Results:</h2>
+                <div class="result-item">
+                    <span class="emoji">📅</span>
+                    With <span class="highlight">$${budget.toLocaleString()}</span>/month
+                </div>
+                <div class="result-item">
+                    <span class="emoji">🖱️</span>
+                    Clicks: <span class="highlight">${clicks.toLocaleString()}</span>
+                </div>
+                <div class="result-item">
+                    <span class="emoji">📈</span>
+                    Leads: <span class="highlight">${leads.toLocaleString()}</span>
+                </div>
+                <div class="result-item">
+                    <span class="emoji">💰</span>
+                    Cost Per Lead: <span class="highlight">$${cpl}</span>
+                </div>
+            `;
+
+            resultsDiv.classList.add('visible');
+        }
+
+        // Update results on any input change
+        industrySelect.addEventListener('input', updateResults);
+        budgetInput.addEventListener('input', updateResults);
+
+        // Initial animation trigger
+        setTimeout(() => {
+            document.querySelector('.container').style.transform = 'translateY(0)';
+        }, 100);
+    </script>
+</body>
+</html>
