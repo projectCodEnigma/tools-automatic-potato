@@ -143,13 +143,66 @@
         </div>
     </div>
 
+    <div class="container">
+        <h1>🎯 Smart Campaign Simulator</h1>
+        
+        <!-- Form elements remain the same -->
+
+        <div class="results" id="results">
+            <!-- Results content remains the same -->
+        </div>
+
+        <div class="knowledge-base">
+            <h2>📚 Industry Benchmarks</h2>
+            <div class="benchmark-item">
+                <span class="emoji">🛍️</span>
+                <div>
+                    <strong>E-commerce:</strong> 2-4% Conversion Rate<br>
+                    <small>Source: SUPLIFUL.COM</small>
+                </div>
+            </div>
+            <div class="benchmark-item">
+                <span class="emoji">🏠</span>
+                <div>
+                    <strong>Real Estate:</strong> 5.9% Conversion Rate<br>
+                    <small>Source: BLOGGINGWIZARD.COM</small>
+                </div>
+            </div>
+            <div class="benchmark-item">
+                <span class="emoji">🏥</span>
+                <div>
+                    <strong>Healthcare:</strong> 3.6% Conversion Rate<br>
+                    <small>Source: RULERANALYTICS.COM</small>
+                </div>
+            </div>
+            <div class="benchmark-item">
+                <span class="emoji">💻</span>
+                <div>
+                    <strong>SaaS:</strong> 9.5% Conversion Rate<br>
+                    <small>Source: BLOGGINGWIZARD.COM</small>
+                </div>
+            </div>
+            <div class="benchmark-item">
+                <span class="emoji">🎓</span>
+                <div>
+                    <strong>Education:</strong> 14.2% Conversion Rate<br>
+                    <small>Source: BLOGGINGWIZARD.COM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ Disclaimer: These estimates use industry-average conversion rates from published sources. Actual results may vary based on website quality, ad relevance, market conditions, and other factors. Regular campaign optimization is recommended for best results.
+        </div>
+    </div>
+
     <script>
         const industryMetrics = {
             ecommerce: { cpc: 1.20, conversionRate: 4.5, emoji: '🛍️' },
-            realestate: { cpc: 2.50, conversionRate: 3.0, emoji: '🏠' },
-            saas: { cpc: 3.00, conversionRate: 2.5, emoji: '💻' },
-            education: { cpc: 1.80, conversionRate: 5.0, emoji: '🎓' },
-            healthcare: { cpc: 2.20, conversionRate: 2.8, emoji: '🏥' }
+            realestate: { cpc: 2.50, conversionRate: 5.9, emoji: '🏠' },
+            saas: { cpc: 3.00, conversionRate: 9.5, emoji: '💻' },
+            education: { cpc: 1.80, conversionRate: 14.2, emoji: '🎓' },
+            healthcare: { cpc: 2.20, conversionRate: 3.6, emoji: '🏥' }
         };
 
         const industrySelect = document.getElementById('industry');
