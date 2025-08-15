@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="UTM Builder Tool - Create and manage UTM tracking parameters for your marketing campaigns." />
+    <title>UTM Builder Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: { 
+          extend: { 
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] }, 
+            colors: { 
+              brand: {
+                50:'#f0f9ff',
+                100:'#e0f2fe',
+                200:'#bae6fd',
+                300:'#7dd3fc',
+                400:'#38bdf8',
+                500:'#0ea5e9',
+                600:'#0284c7',
+                700:'#0369a1',
+                800:'#075985',
+                900:'#0c4a6e'
+              } 
+            }, 
+            boxShadow: { glow: '0 10px 30px rgba(14,165,233,.25)' } 
+          } 
+        }, 
+        darkMode: 'class'
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      .glass { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35)); }
+      .dark .glass { background: linear-gradient(180deg, rgba(3,7,18,.55), rgba(3,7,18,.35)); }
+    </style>
+  </head>
+  <body class="font-sans bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:glass/50">
+      <div class="glass border-b border-white/10 dark:border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+          <a href="../index.html" class="flex items-center gap-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white shadow-glow">Z</span>
+            <div class="leading-tight">
+              <div class="text-base font-bold tracking-tight">ZELDIGITAL</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Premium Tools Suite</div>
+            </div>
+          </a>
+          <div class="flex items-center gap-2">
+            <button id="themeBtn" class="px-3 py-2 rounded-lg text-sm border border-slate-200/70 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Toggle theme</button>
+            <a href="../index.html#tools" class="inline-flex items-center rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 shadow-glow">All Tools</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="py-10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-4">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250" crossorigin="anonymous"></script>
+          <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-2137593406454250" data-ad-slot="1011661937"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="glass rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-glow">
+          <h1 class="text-2xl font-bold tracking-tight">UTM Builder Tool</h1>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Create and manage UTM tracking parameters for your marketing campaigns.</p>
+          
+          <div class="mt-6 grid gap-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="baseUrl" class="text-sm font-medium">Base URL *</label>
+                <input type="url" id="baseUrl" placeholder="https://example.com/page" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+              </div>
+              <div>
+                <label for="campaignName" class="text-sm font-medium">Campaign Name *</label>
+                <input type="text" id="campaignName" placeholder="summer_sale_2024" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div>
+                <label for="source" class="text-sm font-medium">Source</label>
+                <select id="source" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                  <option value="">Select source...</option>
+                  <option value="google">Google</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="twitter">Twitter</option>
+                  <option value="email">Email</option>
+                  <option value="newsletter">Newsletter</option>
+                  <option value="blog">Blog</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="pinterest">Pinterest</option>
+                  <option value="snapchat">Snapchat</option>
+                  <option value="reddit">Reddit</option>
+                  <option value="quora">Quora</option>
+                  <option value="medium">Medium</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+              <div>
+                <label for="medium" class="text-sm font-medium">Medium</label>
+                <select id="medium" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                  <option value="">Select medium...</option>
+                  <option value="cpc">CPC (Paid Search)</option>
+                  <option value="cpm">CPM (Display Ads)</option>
+                  <option value="email">Email</option>
+                  <option value="social">Social Media</option>
+                  <option value="organic">Organic Search</option>
+                  <option value="referral">Referral</option>
+                  <option value="affiliate">Affiliate</option>
+                  <option value="banner">Banner</option>
+                  <option value="video">Video</option>
+                  <option value="audio">Audio</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+              <div>
+                <label for="term" class="text-sm font-medium">Term</label>
+                <input type="text" id="term" placeholder="keyword or search term" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="content" class="text-sm font-medium">Content</label>
+                <input type="text" id="content" placeholder="banner_ad_1 or text_link" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+              </div>
+              <div>
+                <label for="customParam" class="text-sm font-medium">Custom Parameter</label>
+                <div class="flex gap-2">
+                  <input type="text" id="customParamName" placeholder="Parameter name" class="mt-2 flex-1 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                  <input type="text" id="customParamValue" placeholder="Value" class="mt-2 flex-1 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3 mt-2">
+              <button class="inline-flex items-center rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 shadow-glow" onclick="buildUTM()">Build UTM URL</button>
+              <button class="inline-flex items-center rounded-xl bg-slate-900 dark:bg-white dark:text-slate-900 text-white text-sm font-semibold px-4 py-2" onclick="clearFields()">Clear Fields</button>
+              <button class="inline-flex items-center rounded-xl bg-slate-900 dark:bg-white dark:text-slate-900 text-white text-sm font-semibold px-4 py-2" onclick="copyUTM()">Copy URL</button>
+            </div>
+
+            <div class="mt-4">
+              <label for="utmResult" class="text-sm font-medium">Generated UTM URL</label>
+              <textarea id="utmResult" readonly placeholder="Your UTM URL will appear here" class="mt-2 w-full h-24 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none resize-none"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-8 glass rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-glow">
+          <h2 class="text-lg font-semibold">📚 UTM Parameter Guide</h2>
+          <div class="mt-4 grid sm:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h3 class="font-semibold mb-2">Required Parameters</h3>
+              <ul class="space-y-1">
+                <li><strong>utm_source:</strong> Identifies the traffic source (e.g., google, facebook)</li>
+                <li><strong>utm_medium:</strong> Marketing medium (e.g., cpc, email, social)</li>
+                <li><strong>utm_campaign:</strong> Campaign name for grouping related activities</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">Optional Parameters</h3>
+              <ul class="space-y-1">
+                <li><strong>utm_term:</strong> Keywords for paid search campaigns</li>
+                <li><strong>utm_content:</strong> Differentiates similar content or links</li>
+                <li><strong>Custom:</strong> Add your own tracking parameters</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-4 p-3 bg-brand-50 dark:bg-slate-800/50 rounded-lg">
+            <p class="text-xs text-slate-600 dark:text-slate-300"><strong>💡 Tip:</strong> Use lowercase letters and underscores instead of spaces. Keep campaign names consistent for better analytics grouping.</p>
+          </div>
+        </section>
+
+        <section class="mt-8 glass rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-glow">
+          <h2 class="text-lg font-semibold">🔗 Quick Templates</h2>
+          <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <button onclick="loadTemplate('google_ads')" class="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <div class="font-medium">Google Ads</div>
+              <div class="text-xs text-slate-500">Source: google, Medium: cpc</div>
+            </button>
+            <button onclick="loadTemplate('facebook_ads')" class="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <div class="font-medium">Facebook Ads</div>
+              <div class="text-xs text-slate-500">Source: facebook, Medium: cpm</div>
+            </button>
+            <button onclick="loadTemplate('email_campaign')" class="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <div class="font-medium">Email Campaign</div>
+              <div class="text-xs text-slate-500">Source: email, Medium: email</div>
+            </button>
+            <button onclick="loadTemplate('social_media')" class="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <div class="font-medium">Social Media</div>
+              <div class="text-xs text-slate-500">Source: social, Medium: social</div>
+            </button>
+            <button onclick="loadTemplate('blog_post')" class="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <div class="font-medium">Blog Post</div>
+              <div class="text-xs text-slate-500">Source: blog, Medium: referral</div>
+            </button>
+            <button onclick="loadTemplate('affiliate')" class="text-left p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <div class="font-medium">Affiliate</div>
+              <div class="text-xs text-slate-500">Source: affiliate, Medium: affiliate</div>
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="py-10 border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex items-center justify-between">
+        <span>© <span id="year"></span> ZELDIGITAL. All rights reserved.</span>
+        <a href="../index.html" class="hover:text-slate-700 dark:hover:text-slate-300">Back to Home</a>
+      </div>
+    </footer>
+
+    <script>
+      const templates = {
+        google_ads: { source: 'google', medium: 'cpc', content: 'search_ad' },
+        facebook_ads: { source: 'facebook', medium: 'cpm', content: 'social_ad' },
+        email_campaign: { source: 'email', medium: 'email', content: 'newsletter' },
+        social_media: { source: 'social', medium: 'social', content: 'organic_post' },
+        blog_post: { source: 'blog', medium: 'referral', content: 'article_link' },
+        affiliate: { source: 'affiliate', medium: 'affiliate', content: 'partner_link' }
+      };
+
+      function buildUTM() {
+        const baseUrl = document.getElementById('baseUrl').value.trim();
+        const campaignName = document.getElementById('campaignName').value.trim();
+        const source = document.getElementById('source').value;
+        const medium = document.getElementById('medium').value;
+        const term = document.getElementById('term').value.trim();
+        const content = document.getElementById('content').value.trim();
+        const customParamName = document.getElementById('customParamName').value.trim();
+        const customParamValue = document.getElementById('customParamValue').value.trim();
+
+        if (!baseUrl || !campaignName) {
+          alert('Please enter both Base URL and Campaign Name');
+          return;
+        }
+
+        let utmUrl = baseUrl;
+        const params = new URLSearchParams();
+
+        if (source) params.append('utm_source', source);
+        if (medium) params.append('utm_medium', medium);
+        params.append('utm_campaign', campaignName);
+        if (term) params.append('utm_term', term);
+        if (content) params.append('utm_content', content);
+        if (customParamName && customParamValue) {
+          params.append(customParamName, customParamValue);
+        }
+
+        if (params.toString()) {
+          utmUrl += (utmUrl.includes('?') ? '&' : '?') + params.toString();
+        }
+
+        document.getElementById('utmResult').value = utmUrl;
+      }
+
+      function clearFields() {
+        document.getElementById('baseUrl').value = '';
+        document.getElementById('campaignName').value = '';
+        document.getElementById('source').value = '';
+        document.getElementById('medium').value = '';
+        document.getElementById('term').value = '';
+        document.getElementById('content').value = '';
+        document.getElementById('customParamName').value = '';
+        document.getElementById('customParamValue').value = '';
+        document.getElementById('utmResult').value = '';
+      }
+
+      function copyUTM() {
+        const utmResult = document.getElementById('utmResult');
+        if (!utmResult.value) {
+          alert('Please build a UTM URL first');
+          return;
+        }
+        utmResult.select();
+        document.execCommand('copy');
+        alert('UTM URL copied to clipboard!');
+      }
+
+      function loadTemplate(templateName) {
+        const template = templates[templateName];
+        if (template) {
+          document.getElementById('source').value = template.source;
+          document.getElementById('medium').value = template.medium;
+          document.getElementById('content').value = template.content;
+          document.getElementById('campaignName').focus();
+        }
+      }
+
+      // Auto-build UTM when required fields change
+      document.getElementById('baseUrl').addEventListener('input', buildUTM);
+      document.getElementById('campaignName').addEventListener('input', buildUTM);
+      document.getElementById('source').addEventListener('change', buildUTM);
+      document.getElementById('medium').addEventListener('change', buildUTM);
+      document.getElementById('term').addEventListener('input', buildUTM);
+      document.getElementById('content').addEventListener('input', buildUTM);
+      document.getElementById('customParamName').addEventListener('input', buildUTM);
+      document.getElementById('customParamValue').addEventListener('input', buildUTM);
+
+      // Theme toggle functionality
+      const themeBtn = document.getElementById('themeBtn');
+      const root = document.documentElement;
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
+
+      function initTheme() {
+        const saved = localStorage.getItem('zd-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+      }
+
+      initTheme();
+      themeBtn.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.setItem('zd-theme', root.classList.contains('dark') ? 'dark' : 'light');
+      });
+    </script>
+  </body>
+</html>

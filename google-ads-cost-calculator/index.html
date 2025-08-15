@@ -1,123 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Google Ads Budget Calculator - Plan your monthly and annual ad budgets, optimize campaigns based on CPC, ROI, and achieve success with tailored ad strategy.">
-    <meta name="keywords" content="Google Ads Budget Planner, Monthly Ad Budget Calculator, CPC Optimization Tool, Google Ads ROI Calculator, Digital Marketing Budget Planning">
-    <meta name="author" content="Your Name or Brand">
-    <title>Google Ads Budget Calculator | Plan Ad Campaigns Effectively</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h2 {
-            text-align: center;
-            font-size: 28px;
-            color: #333;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .grid-item {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        label {
-            font-size: 14px;
-            color: #333;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .result {
-            background-color: #eef6ff;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 18px;
-            color: #333;
-        }
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Google Ads Budget Calculator - Plan your monthly and annual ad budgets, optimize campaigns based on CPC and CVR." />
+    <meta name="keywords" content="Google Ads Budget Planner, Monthly Ad Budget Calculator, CPC Optimization Tool, Google Ads ROI Calculator, Digital Marketing Budget Planning" />
+    <title>Google Ads Cost Calculator</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        function updateMetrics() {
-            let adSpend = parseFloat(document.getElementById('ad-spend').value) || 0;
-            let cpc = parseFloat(document.getElementById('cpc').value) || 0;
-            let conversionRate = parseFloat(document.getElementById('conversion-rate').value) || 0;
-
-            if (adSpend > 0 && cpc > 0 && conversionRate > 0) {
-                let totalSessions = Math.floor(adSpend / cpc);
-                let leads = Math.floor(totalSessions * (conversionRate / 100));
-                let costPerLead = leads > 0 ? (adSpend / leads).toFixed(2) : 0;
-
-                document.getElementById('metrics-result').innerHTML = `
-                    <strong>Google Ads Lead Metrics:</strong><br>
-                    Total Website Sessions from PPC: ${totalSessions}<br>
-                    Conversions/Leads: ${leads}<br>
-                    Cost Per Raw Inquiry: $${costPerLead}
-                `;
-            } else {
-                document.getElementById('metrics-result').innerHTML = "Please enter positive values for all fields.";
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', updateMetrics); // Calculate when the page loads
-        document.addEventListener('input', updateMetrics); // Update when inputs change
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+            colors: {
+              brand: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' }
+            },
+            boxShadow: { glow: '0 10px 30px rgba(14,165,233,.25)' }
+          }
+        },
+        darkMode: 'class'
+      }
     </script>
-</head>
-<body>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-2137593406454250"
-     data-ad-slot="1011661937"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <div class="container">
-        <h2>Google Ads Cost Calculator</h2>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      .glass { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35)); }
+      .dark .glass { background: linear-gradient(180deg, rgba(3,7,18,.55), rgba(3,7,18,.35)); }
+    </style>
+  </head>
+  <body class="font-sans bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:glass/50">
+      <div class="glass border-b border-white/10 dark:border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+          <a href="../index.html" class="flex items-center gap-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white shadow-glow">Z</span>
+            <div class="leading-tight">
+              <div class="text-base font-bold tracking-tight">ZELDIGITAL</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Premium Tools Suite</div>
+            </div>
+          </a>
+          <div class="flex items-center gap-2">
+            <button id="themeBtn" class="px-3 py-2 rounded-lg text-sm border border-slate-200/70 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Toggle theme</button>
+            <a href="../index.html#tools" class="inline-flex items-center rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 shadow-glow">All Tools</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-        <div class="grid">
-            <div class="grid-item">
-                <label for="ad-spend">Google Ad Spend Per Month ($)</label>
-                <input type="number" id="ad-spend" value="10000" placeholder="e.g., 4000">
-            </div>
-            <div class="grid-item">
-                <label for="cpc">Average Cost Per Click ($)</label>
-                <input type="number" id="cpc" value="1" placeholder="e.g., 1">
-            </div>
-            <div class="grid-item">
-                <label for="conversion-rate">Lead Conversion Rate (%)</label>
-                <input type="number" id="conversion-rate" value="15" placeholder="e.g., 15">
-            </div>
+    <main class="py-10">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-4">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250" crossorigin="anonymous"></script>
+          <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-2137593406454250" data-ad-slot="1011661937"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div id="metrics-result" class="result" style="margin-top: 20px;"></div>
-    </div>
-</body>
+        <section class="glass rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-glow">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-bold tracking-tight">Google Ads Cost Calculator</h1>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Estimate sessions, leads, and cost per lead from budget, CPC, and CVR.</p>
+            </div>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="ad-spend" class="text-sm font-medium">Google Ad Spend Per Month ($)</label>
+              <input type="number" id="ad-spend" value="10000" placeholder="e.g., 4000" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
+            <div>
+              <label for="cpc" class="text-sm font-medium">Average Cost Per Click ($)</label>
+              <input type="number" id="cpc" value="1" placeholder="e.g., 1" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
+            <div>
+              <label for="conversion-rate" class="text-sm font-medium">Lead Conversion Rate (%)</label>
+              <input type="number" id="conversion-rate" value="15" placeholder="e.g., 15" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
+          </div>
+
+          <div id="metrics-result" class="mt-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-brand-50 dark:bg-slate-800/50 px-4 py-4 text-slate-800 dark:text-slate-200 text-base"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="py-10 border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex items-center justify-between">
+        <span>© <span id="year"></span> ZELDIGITAL. All rights reserved.</span>
+        <a href="../index.html" class="hover:text-slate-700 dark:hover:text-slate-300">Back to Home</a>
+      </div>
+    </footer>
+
+    <script>
+      function updateMetrics() {
+        const adSpend = parseFloat(document.getElementById('ad-spend').value) || 0;
+        const cpc = parseFloat(document.getElementById('cpc').value) || 0;
+        const conversionRate = parseFloat(document.getElementById('conversion-rate').value) || 0;
+
+        if (adSpend > 0 && cpc > 0 && conversionRate > 0) {
+          const totalSessions = Math.floor(adSpend / cpc);
+          const leads = Math.floor(totalSessions * (conversionRate / 100));
+          const costPerLead = leads > 0 ? (adSpend / leads).toFixed(2) : 0;
+          document.getElementById('metrics-result').innerHTML = `
+            <div class="font-semibold mb-1">Google Ads Lead Metrics</div>
+            <div class="space-y-1 text-sm">
+              <div>Total Website Sessions from PPC: <span class="font-semibold">${totalSessions.toLocaleString()}</span></div>
+              <div>Conversions/Leads: <span class="font-semibold">${leads.toLocaleString()}</span></div>
+              <div>Cost Per Raw Inquiry: <span class="font-semibold">$${costPerLead}</span></div>
+            </div>`;
+        } else {
+          document.getElementById('metrics-result').innerHTML = '<span class="text-slate-500">Please enter positive values for all fields.</span>';
+        }
+      }
+      document.addEventListener('DOMContentLoaded', () => { updateMetrics(); yearEl.textContent = new Date().getFullYear(); });
+      document.addEventListener('input', updateMetrics);
+
+      const themeBtn = document.getElementById('themeBtn');
+      const root = document.documentElement;
+      const yearEl = document.getElementById('year');
+      function initTheme() {
+        const saved = localStorage.getItem('zd-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+      }
+      initTheme();
+      themeBtn.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.setItem('zd-theme', root.classList.contains('dark') ? 'dark' : 'light');
+      });
+    </script>
+  </body>
 </html>

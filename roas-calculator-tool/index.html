@@ -1,273 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Accurately measure your return on ad spend (ROAS) and return on investment (ROI) with this SEO-optimized, user-friendly calculator designed for digital marketers and businesses looking to maximize ad profitability.">
-    <meta name="keywords" content="ROAS calculator, return on ad spend tool, ROI calculator, digital marketing ROI, ad profitability calculator, optimize ad spend, marketing performance metrics">
-    <title>ROAS & ROI Calculator - Optimize Ad Profitability</title>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculate ROAS and ROI to understand ad profitability." />
+    <title>ROAS & ROI Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: { extend: { fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] }, colors: { brand: {50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e'} }, boxShadow: { glow: '0 10px 30px rgba(14,165,233,.25)' } } }, darkMode: 'class'
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial, sans-serif';
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .tool-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
-        }
-
-        h3 {
-            color: #333;
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            padding: 12px;
-            background-color: #007bff;
-            color: #ffffff;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        .result-container {
-            margin-top: 20px;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .feedback {
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        .feedback.good {
-            color: #28a745;
-        }
-
-        .feedback.warning {
-            color: #ffc107;
-        }
-
-        .feedback.bad {
-            color: #dc3545;
-        }
-
-        .action-links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-        }
-
-        .action-links a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .action-links a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .tool-container {
-                padding: 20px;
-            }
-            h3 {
-                font-size: 20px;
-            }
-            .btn {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tool-container {
-                padding: 15px;
-            }
-            input, .btn {
-                font-size: 14px;
-                padding: 8px;
-            }
-        }
-
+      .glass { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35)); }
+      .dark .glass { background: linear-gradient(180deg, rgba(3,7,18,.55), rgba(3,7,18,.35)); }
     </style>
-</head>
-<body>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-2137593406454250"
-     data-ad-slot="1011661937"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <div class="tool-container">
-        <h3>Return on Ad Spend (ROAS) & Return on Investment (ROI)</h3>
+  </head>
+  <body class="font-sans bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:glass/50">
+      <div class="glass border-b border-white/10 dark:border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+          <a href="../index.html" class="flex items-center gap-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white shadow-glow">Z</span>
+            <div class="leading-tight">
+              <div class="text-base font-bold tracking-tight">ZELDIGITAL</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Premium Tools Suite</div>
+            </div>
+          </a>
+          <div class="flex items-center gap-2">
+            <button id="themeBtn" class="px-3 py-2 rounded-lg text-sm border border-slate-200/70 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Toggle theme</button>
+            <a href="../index.html#tools" class="inline-flex items-center rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 shadow-glow">All Tools</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-        <label for="adSpend">Ad Spend (₱)</label>
-        <input type="number" id="adSpend" placeholder="Enter total ad spend" required>
-
-        <label>Do you know your revenue?</label>
-        <div class="radio-group">
-            <label><input type="radio" name="revenueOption" value="yes" checked> Yes</label>
-            <label><input type="radio" name="revenueOption" value="no"> No</label>
+    <main class="py-10">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-4">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250" crossorigin="anonymous"></script>
+          <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-2137593406454250" data-ad-slot="1011661937"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <label for="revenue" id="revenueLabel">Ad Revenue (₱)</label>
-        <input type="number" id="revenue" placeholder="Enter total revenue" required>
+        <section class="glass rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-glow">
+          <h1 class="text-2xl font-bold tracking-tight">ROAS & ROI Calculator</h1>
+          <div class="mt-6 grid gap-4">
+            <div>
+              <label for="adSpend" class="text-sm font-medium">Ad Spend (₱)</label>
+              <input type="number" id="adSpend" placeholder="Enter total ad spend" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
 
-        <label for="profitMargin">Profit Margin (₱)</label>
-        <input type="number" id="profitMargin" placeholder="Enter your profit margin (if applicable)">
+            <div>
+              <div class="text-sm font-medium">Do you know your revenue?</div>
+              <div class="mt-2 flex gap-6 text-sm">
+                <label class="inline-flex items-center gap-2"><input type="radio" name="revenueOption" value="yes" checked> Yes</label>
+                <label class="inline-flex items-center gap-2"><input type="radio" name="revenueOption" value="no"> No</label>
+              </div>
+            </div>
 
-        <button class="btn" onclick="calculateMetrics()">Calculate</button>
+            <div>
+              <label for="revenue" id="revenueLabel" class="text-sm font-medium">Ad Revenue (₱)</label>
+              <input type="number" id="revenue" placeholder="Enter total revenue" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
 
-        <div class="result-container" id="resultContainer" style="display: none;">
-            <p><strong>ROAS:</strong> <span id="roasResult">0%</span></p>
-            <p><strong>ROI:</strong> <span id="roiResult">0%</span></p>
-            <p class="feedback" id="roasFeedback"></p>
-        </div>
+            <div>
+              <label for="profitMargin" class="text-sm font-medium">Profit Margin (₱)</label>
+              <input type="number" id="profitMargin" placeholder="Enter your profit margin (if applicable)" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
 
-        <div class="action-links">
-            <a href="#" onclick="shareResult()">Share result</a>
-            <a href="#" onclick="reloadCalculator()">Reload calculator</a>
-            <a href="#" onclick="clearFields()">Clear all changes</a>
-        </div>
-    </div>
+            <button class="inline-flex items-center rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 shadow-glow w-full sm:w-auto" onclick="calculateMetrics()">Calculate</button>
+
+            <div class="mt-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-brand-50 dark:bg-slate-800/50 px-4 py-4 text-slate-800 dark:text-slate-200 text-base" id="resultContainer" style="display: none;">
+              <p><strong>ROAS:</strong> <span id="roasResult">0%</span></p>
+              <p><strong>ROI:</strong> <span id="roiResult">0%</span></p>
+              <p class="text-sm" id="roasFeedback"></p>
+            </div>
+
+            <div class="mt-2 flex flex-wrap items-center justify-between gap-3 text-sm">
+              <a href="#" onclick="shareResult()" class="text-brand-700 hover:underline">Share result</a>
+              <a href="#" onclick="reloadCalculator()" class="text-brand-700 hover:underline">Reload calculator</a>
+              <a href="#" onclick="clearFields()" class="text-brand-700 hover:underline">Clear all changes</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="py-10 border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex items-center justify-between">
+        <span>© <span id="year"></span> ZELDIGITAL. All rights reserved.</span>
+        <a href="../index.html" class="hover:text-slate-700 dark:hover:text-slate-300">Back to Home</a>
+      </div>
+    </footer>
 
     <script>
-        document.querySelectorAll('input[name="revenueOption"]').forEach(option => {
-            option.addEventListener('change', () => {
-                const revenueInput = document.getElementById('revenue');
-                const revenueLabel = document.getElementById('revenueLabel');
-                if (option.value === 'no') {
-                    revenueInput.disabled = true;
-                    revenueInput.value = '';
-                    revenueLabel.style.color = '#ccc';
-                } else {
-                    revenueInput.disabled = false;
-                    revenueLabel.style.color = '#333';
-                }
-            });
+      document.querySelectorAll('input[name="revenueOption"]').forEach(option => {
+        option.addEventListener('change', () => {
+          const revenueInput = document.getElementById('revenue');
+          const revenueLabel = document.getElementById('revenueLabel');
+          if (option.value === 'no') {
+            revenueInput.disabled = true;
+            revenueInput.value = '';
+            revenueLabel.style.color = '#ccc';
+          } else {
+            revenueInput.disabled = false;
+            revenueLabel.style.color = '';
+          }
         });
+      });
 
-        function calculateMetrics() {
-            const revenue = parseFloat(document.getElementById('revenue').value);
-            const adSpend = parseFloat(document.getElementById('adSpend').value);
-            const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 0;
-            const revenueOption = document.querySelector('input[name="revenueOption"]:checked').value;
+      function calculateMetrics() {
+        const revenue = parseFloat(document.getElementById('revenue').value);
+        const adSpend = parseFloat(document.getElementById('adSpend').value);
+        const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 0;
+        const revenueOption = document.querySelector('input[name="revenueOption"]:checked').value;
 
-            if (isNaN(adSpend) || adSpend <= 0) {
-                alert('Please enter a valid ad spend amount.');
-                return;
-            }
-
-            let roas = 0;
-            let roi = 0;
-
-            if (revenueOption === 'yes') {
-                if (isNaN(revenue) || revenue <= 0) {
-                    alert('Please enter a valid revenue amount.');
-                    return;
-                }
-                roas = ((revenue / adSpend) * 100).toFixed(2);
-                roi = ((profitMargin / adSpend) * 100).toFixed(2);
-            }
-
-            document.getElementById('roasResult').innerText = `${roas}%`;
-            document.getElementById('roiResult').innerText = `${roi}%`;
-
-            let feedback = '';
-            let feedbackClass = 'bad';
-
-            if (roas >= 800) {
-                feedback = '✅ Excellent! You have a highly profitable campaign.';
-                feedbackClass = 'good';
-            } else if (roas >= 400) {
-                feedback = '⚠️ Your ROAS is good, but you can improve to reach 800% or more.';
-                feedbackClass = 'warning';
-            } else {
-                feedback = '❌ Your ROAS is low. Consider optimizing your ad spend or revenue generation.';
-            }
-
-            const resultContainer = document.getElementById('resultContainer');
-            resultContainer.style.display = 'block';
-            const feedbackElement = document.getElementById('roasFeedback');
-            feedbackElement.innerText = feedback;
-            feedbackElement.className = `feedback ${feedbackClass}`;
+        if (isNaN(adSpend) || adSpend <= 0) {
+          alert('Please enter a valid ad spend amount.');
+          return;
         }
 
-        function shareResult() {
-            const roas = document.getElementById('roasResult').innerText;
-            const roi = document.getElementById('roiResult').innerText;
-            const text = `Check out my marketing performance! ROAS: ${roas}, ROI: ${roi}. Calculate yours here: [Your Tool Link]`;
-            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=[Your Tool Link]&quote=${encodeURIComponent(text)}`;
-            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=[Your Tool Link]`;
-
-            const shareOptions = `Choose where to share:
-1. Twitter: ${twitterUrl}
-2. Facebook: ${facebookUrl}
-3. LinkedIn: ${linkedinUrl}`;
-
-            alert(shareOptions);
+        let roas = 0;
+        let roi = 0;
+        if (revenueOption === 'yes') {
+          if (isNaN(revenue) || revenue <= 0) {
+            alert('Please enter a valid revenue amount.');
+            return;
+          }
+          roas = ((revenue / adSpend) * 100).toFixed(2);
+          roi = ((profitMargin / adSpend) * 100).toFixed(2);
         }
 
-        function reloadCalculator() {
-            location.reload();
+        document.getElementById('roasResult').innerText = `${roas}%`;
+        document.getElementById('roiResult').innerText = `${roi}%`;
+
+        let feedback = '';
+        let feedbackClass = 'text-red-600';
+        if (roas >= 800) {
+          feedback = '✅ Excellent! You have a highly profitable campaign.';
+          feedbackClass = 'text-green-600';
+        } else if (roas >= 400) {
+          feedback = '⚠️ Your ROAS is good, but you can improve to reach 800% or more.';
+          feedbackClass = 'text-amber-600';
+        } else {
+          feedback = '❌ Your ROAS is low. Consider optimizing your ad spend or revenue generation.';
         }
 
-        function clearFields() {
-            document.getElementById('adSpend').value = '';
-            document.getElementById('revenue').value = '';
-            document.getElementById('profitMargin').value = '';
-            document.getElementById('resultContainer').style.display = 'none';
+        const resultContainer = document.getElementById('resultContainer');
+        resultContainer.style.display = 'block';
+        const feedbackElement = document.getElementById('roasFeedback');
+        feedbackElement.innerText = feedback;
+        feedbackElement.className = feedbackClass;
+      }
+
+      function shareResult() {
+        const roas = document.getElementById('roasResult').innerText;
+        const roi = document.getElementById('roiResult').innerText;
+        const text = `Check out my marketing performance! ROAS: ${roas}, ROI: ${roi}.`;
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(text)}`;
+        const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?summary=${encodeURIComponent(text)}`;
+        alert(`Choose where to share:\n1. Twitter: ${twitterUrl}\n2. Facebook: ${facebookUrl}\n3. LinkedIn: ${linkedinUrl}`);
+      }
+
+      function reloadCalculator() { location.reload(); }
+      function clearFields() {
+        document.getElementById('adSpend').value = '';
+        document.getElementById('revenue').value = '';
+        document.getElementById('profitMargin').value = '';
+        document.getElementById('resultContainer').style.display = 'none';
+      }
+
+      const themeBtn = document.getElementById('themeBtn');
+      const root = document.documentElement;
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
+      function initTheme() {
+        const saved = localStorage.getItem('zd-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
         }
+      }
+      initTheme();
+      themeBtn.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.setItem('zd-theme', root.classList.contains('dark') ? 'dark' : 'light');
+      });
     </script>
-</body>
+  </body>
 </html>

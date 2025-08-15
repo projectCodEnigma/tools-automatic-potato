@@ -36,4 +36,20 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- Campaign Performance Simulator Tool -->
+    <url>
+        <loc>https://tools.zeldigital.com/campaign-performance-simulator-calculator</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- UTM Builder Tool -->
+    <url>
+        <loc>https://tools.zeldigital.com/utm-builder-tool</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
 </urlset>

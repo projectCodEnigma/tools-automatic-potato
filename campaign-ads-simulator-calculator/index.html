@@ -1,262 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎯 Campaign Simulator Calculator</title>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campaign Ads Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: { extend: { fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] }, colors: { brand: {50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e'} }, boxShadow: { glow: '0 10px 30px rgba(14,165,233,.25)' } } }, darkMode: 'class'
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f2f5;
-        }
-
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-
-        .container:hover {
-            transform: translateY(-2px);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #2d3436;
-        }
-
-        select, input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        select:focus, input:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        .results {
-            margin-top: 30px;
-            padding: 25px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #007bff;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease-out;
-        }
-
-        .results.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .result-item {
-            margin: 18px 0;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .highlight {
-            color: #007bff;
-            font-weight: 700;
-            font-size: 1.2em;
-        }
-
-        .emoji {
-            font-size: 1.4em;
-            margin-right: 8px;
-        }
-
-        .industry-emoji {
-            font-size: 1.2em;
-            margin-right: 10px;
-        }
+      .glass { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35)); }
+      .dark .glass { background: linear-gradient(180deg, rgba(3,7,18,.55), rgba(3,7,18,.35)); }
     </style>
-</head>
-<body>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-2137593406454250"
-     data-ad-slot="1011661937"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<div class="container">
-        <h1>🎯 Campaign Simulator Calculator</h1>
-        
-        <div class="form-group">
-            <label for="industry">🏭 Select Industry:</label>
-            <select id="industry">
+  </head>
+  <body class="font-sans bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:glass/50">
+      <div class="glass border-b border-white/10 dark:border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+          <a href="../index.html" class="flex items-center gap-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white shadow-glow">Z</span>
+            <div class="leading-tight">
+              <div class="text-base font-bold tracking-tight">ZELDIGITAL</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Premium Tools Suite</div>
+            </div>
+          </a>
+          <div class="flex items-center gap-2">
+            <button id="themeBtn" class="px-3 py-2 rounded-lg text-sm border border-slate-200/70 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Toggle theme</button>
+            <a href="../index.html#tools" class="inline-flex items-center rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 shadow-glow">All Tools</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="py-10">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-4">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2137593406454250" crossorigin="anonymous"></script>
+          <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-2137593406454250" data-ad-slot="1011661937"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="glass rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-glow">
+          <h1 class="text-2xl font-bold tracking-tight">🎯 Campaign Ads Simulator</h1>
+          <div class="mt-6 grid gap-4">
+            <div>
+              <label for="industry" class="text-sm font-medium">🏭 Select Industry</label>
+              <select id="industry" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 <option value="">📋 Choose your industry...</option>
                 <option value="ecommerce">🛍️ E-commerce</option>
                 <option value="realestate">🏠 Real Estate</option>
                 <option value="saas">💻 SaaS</option>
                 <option value="education">🎓 Education</option>
                 <option value="healthcare">🏥 Healthcare</option>
-            </select>
-        </div>
+              </select>
+            </div>
+            <div>
+              <label for="budget" class="text-sm font-medium">💰 Monthly Budget ($)</label>
+              <input id="budget" type="number" min="0" step="100" placeholder="Enter amount" class="mt-2 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            </div>
+          </div>
 
-        <div class="form-group">
-            <label for="budget">💰 Monthly Budget ($):</label>
-            <input type="number" id="budget" placeholder="Enter amount" min="0" step="100">
-        </div>
+          <div id="results" class="mt-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-brand-50 dark:bg-slate-800/50 px-4 py-4 text-slate-800 dark:text-slate-200 text-base">
+            <h2 class="font-semibold mb-2">📈 Potential Results</h2>
+            <div class="space-y-1 text-sm">
+              <div><span class="mr-1">📅</span> With <span class="font-semibold" id="resultBudget">$5,000</span>/month</div>
+              <div><span class="mr-1">🖱️</span> Clicks: <span class="font-semibold" id="resultClicks">0</span></div>
+              <div><span class="mr-1">📈</span> Leads: <span class="font-semibold" id="resultLeads">0</span></div>
+              <div><span class="mr-1">💰</span> Cost Per Lead: <span class="font-semibold" id="resultCPL">$0</span></div>
+            </div>
+          </div>
+        </section>
 
-        <div class="results" id="results">
-            <h2>📈 Potential Results:</h2>
-            <div class="result-item">
-                <span class="emoji">📅</span>
-                With <span class="highlight" id="resultBudget">$5,000</span>/month:
-            </div>
-            <div class="result-item">
-                <span class="emoji">🖱️</span>
-                Clicks: <span class="highlight" id="resultClicks">0</span>
-            </div>
-            <div class="result-item">
-                <span class="emoji">📈</span>
-                Leads: <span class="highlight" id="resultLeads">0</span>
-            </div>
-            <div class="result-item">
-                <span class="emoji">💰</span>
-                Cost Per Lead: <span class="highlight" id="resultCPL">$0</span>
-            </div>
-        </div>
-    </div>
+        <section class="mt-8 glass rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-glow">
+          <h2 class="text-lg font-semibold">📚 Industry Benchmarks</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li class="flex gap-2 items-start"><span>🛍️</span><div><strong>E-commerce:</strong> 2–4% Conversion Rate<br/><small>Source: SUPLIFUL.COM</small></div></li>
+            <li class="flex gap-2 items-start"><span>🏠</span><div><strong>Real Estate:</strong> 5.9% Conversion Rate<br/><small>Source: BLOGGINGWIZARD.COM</small></div></li>
+            <li class="flex gap-2 items-start"><span>🏥</span><div><strong>Healthcare:</strong> 3.6% Conversion Rate<br/><small>Source: RULERANALYTICS.COM</small></div></li>
+            <li class="flex gap-2 items-start"><span>💻</span><div><strong>SaaS:</strong> 9.5% Conversion Rate<br/><small>Source: BLOGGINGWIZARD.COM</small></div></li>
+            <li class="flex gap-2 items-start"><span>🎓</span><div><strong>Education:</strong> 14.2% Conversion Rate<br/><small>Source: BLOGGINGWIZARD.COM</small></div></li>
+          </ul>
+          <p class="mt-4 text-xs text-slate-500">Disclaimer: Estimates use industry-average conversion rates. Actual results may vary.</p>
+        </section>
+      </div>
+    </main>
 
-    <div class="container">
-        <h1>🎯 Smart Campaign Simulator</h1>
-        
-        <!-- Form elements remain the same -->
-
-        <div class="results" id="results">
-            <!-- Results content remains the same -->
-        </div>
-
-        <div class="knowledge-base">
-            <h2>📚 Industry Benchmarks</h2>
-            <div class="benchmark-item">
-                <span class="emoji">🛍️</span>
-                <div>
-                    <strong>E-commerce:</strong> 2-4% Conversion Rate<br>
-                    <small>Source: SUPLIFUL.COM</small>
-                </div>
-            </div>
-            <div class="benchmark-item">
-                <span class="emoji">🏠</span>
-                <div>
-                    <strong>Real Estate:</strong> 5.9% Conversion Rate<br>
-                    <small>Source: BLOGGINGWIZARD.COM</small>
-                </div>
-            </div>
-            <div class="benchmark-item">
-                <span class="emoji">🏥</span>
-                <div>
-                    <strong>Healthcare:</strong> 3.6% Conversion Rate<br>
-                    <small>Source: RULERANALYTICS.COM</small>
-                </div>
-            </div>
-            <div class="benchmark-item">
-                <span class="emoji">💻</span>
-                <div>
-                    <strong>SaaS:</strong> 9.5% Conversion Rate<br>
-                    <small>Source: BLOGGINGWIZARD.COM</small>
-                </div>
-            </div>
-            <div class="benchmark-item">
-                <span class="emoji">🎓</span>
-                <div>
-                    <strong>Education:</strong> 14.2% Conversion Rate<br>
-                    <small>Source: BLOGGINGWIZARD.COM</small>
-                </div>
-            </div>
-        </div>
-
-        <div class="disclaimer">
-            ⚠️ Disclaimer: These estimates use industry-average conversion rates from published sources. Actual results may vary based on website quality, ad relevance, market conditions, and other factors. Regular campaign optimization is recommended for best results.
-        </div>
-    </div>
+    <footer class="py-10 border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex items-center justify-between">
+        <span>© <span id="year"></span> ZELDIGITAL. All rights reserved.</span>
+        <a href="../index.html" class="hover:text-slate-700 dark:hover:text-slate-300">Back to Home</a>
+      </div>
+    </footer>
 
     <script>
-        const industryMetrics = {
-            ecommerce: { cpc: 1.20, conversionRate: 4.5, emoji: '🛍️' },
-            realestate: { cpc: 2.50, conversionRate: 5.9, emoji: '🏠' },
-            saas: { cpc: 3.00, conversionRate: 9.5, emoji: '💻' },
-            education: { cpc: 1.80, conversionRate: 14.2, emoji: '🎓' },
-            healthcare: { cpc: 2.20, conversionRate: 3.6, emoji: '🏥' }
-        };
+      const industryMetrics = {
+        ecommerce: { cpc: 1.20, conversionRate: 4.5, emoji: '🛍️' },
+        realestate: { cpc: 2.50, conversionRate: 5.9, emoji: '🏠' },
+        saas: { cpc: 3.00, conversionRate: 9.5, emoji: '💻' },
+        education: { cpc: 1.80, conversionRate: 14.2, emoji: '🎓' },
+        healthcare: { cpc: 2.20, conversionRate: 3.6, emoji: '🏥' }
+      };
 
-        const industrySelect = document.getElementById('industry');
-        const budgetInput = document.getElementById('budget');
-        const resultsDiv = document.getElementById('results');
+      const industrySelect = document.getElementById('industry');
+      const budgetInput = document.getElementById('budget');
+      const resultsDiv = document.getElementById('results');
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
 
-        function updateResults() {
-            const industry = industrySelect.value;
-            const budget = parseFloat(budgetInput.value);
-            
-            if (!industry || isNaN(budget) || budget <= 0) {
-                resultsDiv.innerHTML = `
-                    <div class="result-item">❌ Please select an industry and enter valid budget</div>
-                `;
-                resultsDiv.classList.add('visible');
-                return;
-            }
+      function updateResults() {
+        const industry = industrySelect.value;
+        const budget = parseFloat(budgetInput.value);
 
-            const metrics = industryMetrics[industry];
-            const clicks = Math.floor(budget / metrics.cpc);
-            const leads = Math.floor(clicks * (metrics.conversionRate / 100));
-            const cpl = leads > 0 ? (budget / leads).toFixed(2) : 0;
-
-            resultsDiv.innerHTML = `
-                <h2>${metrics.emoji} ${industrySelect.options[industrySelect.selectedIndex].text.split(' ')[1]} Results:</h2>
-                <div class="result-item">
-                    <span class="emoji">📅</span>
-                    With <span class="highlight">$${budget.toLocaleString()}</span>/month
-                </div>
-                <div class="result-item">
-                    <span class="emoji">🖱️</span>
-                    Clicks: <span class="highlight">${clicks.toLocaleString()}</span>
-                </div>
-                <div class="result-item">
-                    <span class="emoji">📈</span>
-                    Leads: <span class="highlight">${leads.toLocaleString()}</span>
-                </div>
-                <div class="result-item">
-                    <span class="emoji">💰</span>
-                    Cost Per Lead: <span class="highlight">$${cpl}</span>
-                </div>
-            `;
-
-            resultsDiv.classList.add('visible');
+        if (!industry || isNaN(budget) || budget <= 0) {
+          resultsDiv.querySelector('#resultBudget').textContent = '$5,000';
+          resultsDiv.querySelector('#resultClicks').textContent = '0';
+          resultsDiv.querySelector('#resultLeads').textContent = '0';
+          resultsDiv.querySelector('#resultCPL').textContent = '$0';
+          return;
         }
 
-        // Update results on any input change
-        industrySelect.addEventListener('input', updateResults);
-        budgetInput.addEventListener('input', updateResults);
+        const metrics = industryMetrics[industry];
+        const clicks = Math.floor(budget / metrics.cpc);
+        const leads = Math.floor(clicks * (metrics.conversionRate / 100));
+        const cpl = leads > 0 ? (budget / leads).toFixed(2) : 0;
 
-        // Initial animation trigger
-        setTimeout(() => {
-            document.querySelector('.container').style.transform = 'translateY(0)';
-        }, 100);
+        resultsDiv.querySelector('#resultBudget').textContent = `$${budget.toLocaleString()}`;
+        resultsDiv.querySelector('#resultClicks').textContent = clicks.toLocaleString();
+        resultsDiv.querySelector('#resultLeads').textContent = leads.toLocaleString();
+        resultsDiv.querySelector('#resultCPL').textContent = `$${cpl}`;
+      }
+
+      industrySelect.addEventListener('input', updateResults);
+      budgetInput.addEventListener('input', updateResults);
+
+      const themeBtn = document.getElementById('themeBtn');
+      const root = document.documentElement;
+      function initTheme() {
+        const saved = localStorage.getItem('zd-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+      }
+      initTheme();
+      themeBtn.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.setItem('zd-theme', root.classList.contains('dark') ? 'dark' : 'light');
+      });
     </script>
-</body>
+  </body>
 </html>
